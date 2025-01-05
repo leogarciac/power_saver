@@ -12,6 +12,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <time.h>
+#include "dynamic_backlight_control.h"
 
 
 #define TIMEOUT 5
