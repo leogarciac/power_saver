@@ -1,3 +1,7 @@
-## POWER SAVER 
+# POWER SAVER 
 
-This project is WIP. This is a basic setup with a simple functionality. Please feel free to work on any issue or ideas. 
+This is a simple power saver project build with the help of [aatbip](https://github.com/aatbip).
+
+## FEATURES
+
+This power saver project is currently only having a backlight control.
