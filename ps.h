@@ -12,9 +12,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <time.h>
-#include <unistd.h>
-#include <glob.h>
-#include <sys/stat.h>
+
 
 #define TIMEOUT 5
 #define INPUT_DIR "/dev/input"
