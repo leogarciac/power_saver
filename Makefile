@@ -3,8 +3,11 @@ NAME = power_saver
 CFLAGS = -Wall -Wextra -Werror -I. -I/usr/include/libevdev-1.0
 LDFLAGS = -L/usr/lib/x86_64-linux-gnu -levdev
 SRC = ./main.c \
-      ./utils.c \
-	  ./dynamic_backlight_control.c
+      ./utils_main.c \
+	  ./dynamic_backlight_control.c \
+	  ./utils_backlight_control.c \
+	  ./utils_idle_and_audio_activity_check.c \
+	  ./idle_and_audio_activity_check.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
