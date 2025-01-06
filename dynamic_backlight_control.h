@@ -10,5 +10,4 @@
 
 int directory_exists(const char *path);
 
-
 # endif

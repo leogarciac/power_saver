@@ -13,6 +13,7 @@
 #include <sys/types.h>
 #include <time.h>
 #include "dynamic_backlight_control.h"
+#include "idle_and_audio_activity_check.h"
 
 
 #define TIMEOUT 5

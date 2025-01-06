@@ -55,7 +55,8 @@ void set_brightness_dynamically(int brightness_percentage) {
     globfree(&globbuf);
 }
 
-int main() {
+
+/* int main() {
     int brightness_percentage;
     printf("Enter brightness percentage (0-100): ");
     if (scanf("%d", &brightness_percentage) != 1 || brightness_percentage < 0 || brightness_percentage > 100) {
@@ -64,4 +65,4 @@ int main() {
     }
     set_brightness_dynamically(brightness_percentage);
     return 0;
-}
+} */
