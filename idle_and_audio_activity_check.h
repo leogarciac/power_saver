@@ -11,6 +11,8 @@
 #include <string.h>
 #include <pulse/simple.h>
 #include <pulse/error.h>
+#include <pulse/context.h>
+#include "ps.h"
 
 unsigned int    get_idle_time(Display *display);
 void            adjust_brightness(int restore);

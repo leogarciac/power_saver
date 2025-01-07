@@ -22,5 +22,6 @@
 
 long get_current_time();
 void exit_terminal(pid_t pid);
+void set_brightness_dynamically(int brightness_percentage);
 
 #endif

@@ -14,6 +14,14 @@ unsigned int get_idle_time(Display *display) {
 
 void adjust_brightness(int restore) {
     if (restore) {
+        printf("restoring brightness to 100%%.\n");
+        set_brightness_dynamically(100);
+    } else {
+        printf("Reducing brightness due to inactivity.\n");
+        set_brightness_dynamically(30);
+    }
+
+/*     if (restore) {
         printf("Restoring brightness to 100%%.\n");
         if (system("brightnessctl set 100%") != 0) {
             printf("Failed to restore brightness.\n");
@@ -23,5 +31,5 @@ void adjust_brightness(int restore) {
         if (system("brightnessctl set 30%") != 0) {
             printf("Failed to reduce brightness.\n");
         }
-    }
+    } */
 }
