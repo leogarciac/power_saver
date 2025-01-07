@@ -9,5 +9,6 @@
 #include <sys/stat.h>
 
 int directory_exists(const char *path);
+int read_max_brightness(const char *device_path);
 
 # endif

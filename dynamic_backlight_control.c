@@ -1,22 +1,10 @@
 # include "ps.h"
 
-int read_max_brightness(const char *device_path) {
-    char max_brightness_path[256];
-    snprintf(max_brightness_path, sizeof(max_brightness_path), "%s/max_brightness", device_path);
-    FILE *fp = fopen(max_brightness_path, "r");
-    if (!fp) {
-        perror("Failed to read max_brightness");
-        return -1;
-    }
-    int max_brightness;
-    fscanf(fp, "%d", &max_brightness);
-    fclose(fp);
-    return max_brightness;
-}
-int set_brightness_for_device(const char *device_path, int brightness_percentage) {
+int set_brightness_for_device(const char *device_path, int brightness_percent) {
     int max_brightness = read_max_brightness(device_path);
-    if (max_brightness < 0) return -1;
-    int scaled_brightness = max_brightness * brightness_percentage / 100;
+    if (max_brightness < 0)
+        return -1;
+    int scaled_brightness = max_brightness * brightness_percent / 100;
     char brightness_path[256];
     snprintf(brightness_path, sizeof(brightness_path), "%s/brightness", device_path);
     FILE *fp = fopen(brightness_path, "w");
@@ -26,11 +14,11 @@ int set_brightness_for_device(const char *device_path, int brightness_percentage
     }
     fprintf(fp, "%d", scaled_brightness);
     fclose(fp);
-    printf("Brightness for device '%s' set to %d (%d%% of max).\n", device_path, scaled_brightness, brightness_percentage);
+    printf("Brightness for device '%s' set to %d (%d%% of max).\n", device_path, scaled_brightness, brightness_percent);
     return 0;
 }
 
-void set_brightness_dynamically(int brightness_percentage) {
+void set_brightness_dynamically(int brightness_percent) {
     const char *backlight_dir = "/sys/class/backlight/";
     if (!directory_exists(backlight_dir)) {
         printf("No backlight devices found on this system.\n");
@@ -45,7 +33,7 @@ void set_brightness_dynamically(int brightness_percentage) {
             const char *device_path = globbuf.gl_pathv[i];
             devices_found++;
             printf("Found backlight device: %s\n", device_path);
-            set_brightness_for_device(device_path, brightness_percentage);
+            set_brightness_for_device(device_path, brightness_percent);
         }
         if (devices_found == 0)
             printf("No usable backlight devices found.\n");
@@ -57,12 +45,12 @@ void set_brightness_dynamically(int brightness_percentage) {
 
 
 /* int main() {
-    int brightness_percentage;
+    int brightness_percent;
     printf("Enter brightness percentage (0-100): ");
-    if (scanf("%d", &brightness_percentage) != 1 || brightness_percentage < 0 || brightness_percentage > 100) {
+    if (scanf("%d", &brightness_percent) != 1 || brightness_percent < 0 || brightness_percent > 100) {
         printf("Invalid input. Please enter a number between 0 and 100.\n");
         return 1;
     }
-    set_brightness_dynamically(brightness_percentage);
+    set_brightness_dynamically(brightness_percent);
     return 0;
 } */
