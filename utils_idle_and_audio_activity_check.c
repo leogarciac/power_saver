@@ -14,11 +14,13 @@ unsigned int get_idle_time(Display *display) {
 
 void adjust_brightness(int restore) {
     if (restore) {
-        printf("restoring brightness to 100%%.\n");
-        set_brightness_dynamically(100);
+        //printf("restoring brightness to 100%%.\n");
+        //set_brightness_dynamically(100);
+        printf("100");
     } else {
-        printf("Reducing brightness due to inactivity.\n");
-        set_brightness_dynamically(30);
+        //printf("Reducing brightness due to inactivity.\n");
+        //set_brightness_dynamically(30);
+        printf("30");
     }
 
 /*     if (restore) {

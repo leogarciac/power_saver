@@ -44,8 +44,9 @@ void set_brightness_dynamically(int brightness_percent) {
 }
 
 
-/* int main() {
-    int brightness_percent;
+int main(int argc, char **argv) {
+    if (argc == 1) {
+    int brightness_percent == atoi(argv[1]);
     printf("Enter brightness percentage (0-100): ");
     if (scanf("%d", &brightness_percent) != 1 || brightness_percent < 0 || brightness_percent > 100) {
         printf("Invalid input. Please enter a number between 0 and 100.\n");
@@ -53,4 +54,6 @@ void set_brightness_dynamically(int brightness_percent) {
     }
     set_brightness_dynamically(brightness_percent);
     return 0;
-} */
+    }
+    return -1;
+}

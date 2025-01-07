@@ -25,7 +25,7 @@ int is_audio_playing() {
         }
         pa_simple_free(s);
     } else
-        printf("PulseAudio connection failed: %s\n", pa_strerror(pa_context_errno(NULL)));
+        //printf("PulseAudio connection failed: %s\n", pa_strerror(pa_context_errno(NULL)));
     return audio_active;
 }
 
@@ -41,16 +41,16 @@ int main() {
     while (1) {
         idle_time = get_idle_time(display);
         audio_active = is_audio_playing();
-        printf("Audio Avg Level: %d\n", audio_active ? 1 : 0);
-        printf("Idle time: %d ms, Audio Active: %d\n", idle_time, audio_active);
+        //printf("Audio Avg Level: %d\n", audio_active ? 1 : 0);
+        //printf("Idle time: %d ms, Audio Active: %d\n", idle_time, audio_active);
         if (idle_time >= IDLE_TIMEOUT && !audio_active) {
-            printf("Condition met to reduce brightness.\n");
+            //printf("Condition met to reduce brightness.\n");
             if (last_brightness != 30) {
                 adjust_brightness(0);
                 last_brightness = 30;
             }
         } else {
-            printf("Condition met to restore brightness.\n");
+            //printf("Condition met to restore brightness.\n");
             if (last_brightness != 100) {
                 adjust_brightness(1);
                 last_brightness = 100;
