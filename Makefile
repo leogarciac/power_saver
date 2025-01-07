@@ -1,7 +1,7 @@
 CC = cc
 NAME = power_saver
 CFLAGS = -Wall -Wextra -Werror -I. -I/usr/include/libevdev-1.0
-LDFLAGS = -L/usr/lib/x86_64-linux-gnu -levdev
+LDFLAGS = -L/usr/lib/x86_64-linux-gnu -levdev -lX11 -lXss -lpulse-simple -lpulse
 SRC = ./main.c \
       ./utils_main.c \
 	  ./dynamic_backlight_control.c \
@@ -9,9 +9,7 @@ SRC = ./main.c \
 	  ./utils_idle_and_audio_activity_check.c \
 	  ./idle_and_audio_activity_check.c
 OBJ = $(SRC:.c=.o)
-
 all: $(NAME)
-
 $(NAME): $(OBJ)
 	@echo "$(BLUE)Compiling $(NAME)...$(RESET)"
 	@$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
