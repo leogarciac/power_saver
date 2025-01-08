@@ -11,14 +11,14 @@ OBJ_IDLE = $(SRC_IDLE:.c=.o)
 OBJ_BACKLIGHT = $(SRC_BACKLIGHT:.c=.o)
 all: $(NAME_IDLE) $(NAME_BACKLIGHT)
 $(NAME_IDLE): $(OBJ_IDLE)
-	@echo "$(BLUE)Compiling idle$(NAME_IDLE)...$(RESET)"
+	@echo "$(BLUE)Compiling $(NAME_IDLE)...$(RESET)"
 	@$(CC) $(OBJ_IDLE) $(LDFLAGS) -o $(NAME_IDLE)
 	@echo "$(GREEN)Compilation of idle successful!$(RESET)"
 
 $(NAME_BACKLIGHT): $(OBJ_BACKLIGHT)
 	@echo "$(BLUE)Compiling $(NAME_BACKLIGHT)...$(RESET)"
 	@$(CC) $(OBJ_BACKLIGHT) $(LDFLAGS) -o $(NAME_BACKLIGHT)
-	@echo "$(GREEN)Compilation of idle successful!$(RESET)"
+	@echo "$(GREEN)Compilation of backlight successful!$(RESET)"
 
 %.o: %.c
 	@echo "$(YELLOW)Compiling $<...$(RESET)"

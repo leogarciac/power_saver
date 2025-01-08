@@ -17,14 +17,14 @@ int is_audio_playing() {
         uint8_t buf[1024];
         if (pa_simple_read(s, buf, sizeof(buf), NULL) == 0) {
             int avg_level = 0;
-            for (int i = 0; i < sizeof(buf); i++) {
+            for (int i = 0; i < (int)sizeof(buf); i++) {
                 avg_level += buf[i];
             }
             avg_level /= sizeof(buf);
             audio_active = (avg_level > AUDIO_THRESHOLD) ? 1 : 0;
         }
         pa_simple_free(s);
-    } else
+    }
         //printf("PulseAudio connection failed: %s\n", pa_strerror(pa_context_errno(NULL)));
     return audio_active;
 }
